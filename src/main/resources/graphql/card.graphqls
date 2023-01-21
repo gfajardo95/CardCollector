@@ -1,0 +1,33 @@
+type Card {
+    id: ID!
+    title: String!
+    lore: String
+    art: String!
+    type: String!
+    stats: BattleStatsOrManaStats
+}
+
+union BattleStatsOrManaStats = BattleStats | ManaStats
+
+type BattleStats {
+    attack: Int!
+    defense: Int!
+    hp: Int!
+    moves: [Move]
+    manaRequirement: Int!
+}
+
+type ManaStats {
+    manaProvided: Int!
+}
+
+type Move {
+    name: String!
+    description: String!
+    effect: String
+    manaRequirement: Int
+}
+
+type Query {
+    cards: [Card]
+}
